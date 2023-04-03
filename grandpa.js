@@ -41,9 +41,11 @@ console.log(`
 
 `)
 }
+
 //---------------------------------
 if (process.argv[2] && process.argv[2] == '--help') {
   console.log(`
+  Developer assume no liability and are not responsible for any misuse or damage.
 
   -u        Enter the url with this switch, example: -u mysite.com
   
@@ -137,7 +139,7 @@ async function asyncReadFile(filename) {
     }else{
         fs.mkdir(`public/${userUrl}`, { recursive: true }, (error) => {})
     }
-    fs.writeFile(`public/${userUrl}/subdomain_enum.txt`, '', function (err) {})
+    fs.writeFile(`public/${userUrl}/subdomains_enum.txt`, '', function (err) {})
 
     subdomain.forEach(sub => {
         
@@ -148,7 +150,7 @@ async function asyncReadFile(filename) {
             https.get(httpsurl, (resp) => {
                 if(resp.statusCode == myStatusCode){
                      // for add url path to file
-                     fs.appendFile(`public/${userUrl}/subdomain_enum.txt`, `${httpsurl}\n`, (err) => {
+                     fs.appendFile(`public/${userUrl}/subdomains_enum.txt`, `${httpsurl}\n`, (err) => {
                         if (err) {
                           console.log(err)
                         }
@@ -175,7 +177,7 @@ async function asyncReadFile(filename) {
             http.get(httpurl, (resp) => {
                 if(resp.statusCode == myStatusCode){
                     // for add url path to file
-                    fs.appendFile(`public/${userUrl}/subdomain_enum.txt`, `${httpurl}\n`, (err) => {
+                    fs.appendFile(`public/${userUrl}/subdomains_enum.txt`, `${httpurl}\n`, (err) => {
                         if (err) {
                           console.log(err)
                         }
