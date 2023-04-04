@@ -146,9 +146,10 @@ async function asyncReadFile(filename) {
         // https request
         let httpsurl = `https://${sub}.${userUrl}/`
         let httpurl = `http://${sub}.${userUrl}/`
-        spl.forEach((myStatusCode) => {
             https.get(httpsurl, (resp) => {
-                if(resp.statusCode == myStatusCode){
+                let myResp = resp.statusCode.toString()
+                let index = spl.indexOf(myResp)
+                if(index != -1){
                      // for add url path to file
                      fs.appendFile(`public/${userUrl}/subdomains_enum.txt`, `${httpsurl}\n`, (err) => {
                         if (err) {
@@ -173,9 +174,12 @@ async function asyncReadFile(filename) {
                     allUrl.push(httpsurl)
                 }
             }).on('error', (err) => {})
+
             //http request
             http.get(httpurl, (resp) => {
-                if(resp.statusCode == myStatusCode){
+                let myResp = resp.statusCode.toString()
+                let index = spl.indexOf(myResp)
+                if(index != -1){
                     // for add url path to file
                     fs.appendFile(`public/${userUrl}/subdomains_enum.txt`, `${httpurl}\n`, (err) => {
                         if (err) {
@@ -200,7 +204,6 @@ async function asyncReadFile(filename) {
                     allUrl.push(httpurl)
                 }
             }).on('error', (err) => {})
-        })//forEach j
 })
     return subdomain
 }
