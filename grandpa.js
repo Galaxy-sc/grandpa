@@ -51,7 +51,7 @@ if (process.argv[2] && process.argv[2] == '--help') {
   
   -s        Enter the status code with this switch, example: -s 200,301,403...
   
-  -f        Enter the subdomain file list path, example: -f list.txt  (default list subdomain_brute.txt)
+  -f        Enter the subdomain file list path, example: -f list.txt  (default list subdomains_brute.txt)
 
   -ns no    If you don't want to see the result on the web as a GUI, use this switch.
 
@@ -83,7 +83,7 @@ let myPath
 if (brutePath > -1) {
   myPath = process.argv[brutePath + 1]
 }
-const userPath = (myPath || 'subdomain_brute.txt')
+const userPath = (myPath || 'subdomains_brute.txt')
 
 //------------------------------------------
 
